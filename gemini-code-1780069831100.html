@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligentultra | Premium Thumbnail Design for YouTubers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #0a0b10;
+            --bg-card: #12141c;
+            --text-main: #ffffff;
+            --text-muted: #8a8f9f;
+            --accent-neon: #ff2a75;
+            --accent-glow: rgba(255, 42, 117, 0.4);
+            --border-color: #1f2331;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(10, 11, 16, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -1px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: var(--accent-neon);
+        }
+
+        nav {
+            display: flex;
+            gap: 4px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-main);
+            background-color: var(--border-color);
+        }
+
+        /* Page Management Router */
+        .page {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 100px 20px;
+            animation: slideUp 0.4s ease-out forwards;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography */
+        .page-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 600px;
+        }
+
+        /* Action Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-neon);
+            color: white;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px var(--accent-neon);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-youtube {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        .btn-youtube:hover {
+            background-color: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        .btn-instagram {
+            background-color: #e1306c;
+            color: white;
+        }
+
+        .btn-instagram:hover {
+            background-color: #c13584;
+            transform: translateY(-2px);
+        }
+
+        /* HOME / HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 60px;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero-title span {
+            color: var(--accent-neon);
+            text-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-showcase {
+            position: relative;
+            border-radius: var(--radius-lg);
+            aspect-ratio: 16 / 9;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .hero-showcase img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* SHOP ITEMS / COMMISSIONS */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 32px;
+        }
+
+        .shop-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .shop-card:hover {
+            border-color: var(--accent-neon);
+            transform: translateY(-4px);
+        }
+
+        .card-banner {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #1a1d29;
+            overflow: hidden;
+        }
+
+        .card-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .shop-card:hover .card-banner img {
+            transform: scale(1.03);
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-meta {
+            color: var(--accent-neon);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .card-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .card-action-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-rate {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .india-badge {
+            font-size: 13px;
+            color: #4cd137;
+            font-weight: 500;
+        }
+
+        /* WORK PORTFOLIO GALLERY (16:9 Heavy) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 24px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: rgba(10, 11, 16, 0.85);
+            backdrop-filter: blur(4px);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--border-color);
+            z-index: 2;
+        }
+
+        .portfolio-hover {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(10,11,16,0.95) 0%, rgba(10,11,16,0.4) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .portfolio-item:hover .portfolio-hover {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* BOOKING / CONTACT */
+        .panel-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+            align-items: center;
+        }
+
+        .panel-details h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .panel-details p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .metric-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .metric-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-neon);
+            font-weight: 700;
+        }
+
+        .contact-cta-box {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+        }
+
+        .contact-cta-box h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .contact-cta-box p {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-size: 15px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-description {
+                margin: 0 auto 36px auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .panel-layout {
+                grid-template-columns: 1fr;
+                padding: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a class="logo" onclick="routeTo('home')">intelligentultra<span>.</span></a>
+            <nav>
+                <a class="nav-link active" data-page="home" onclick="routeTo('home')">Home</a>
+                <a class="nav-link" data-page="items" onclick="routeTo('items')">Services</a>
+                <a class="nav-link" data-page="gallery" onclick="routeTo('gallery')">Portfolio</a>
+                <a class="nav-link" data-page="contact" onclick="routeTo('contact')">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="hero-left">
+                    <h1 class="hero-title">Thumbnail Design for <span>YouTubers</span> Who Want to Scale.</h1>
+                    <p class="hero-description">I craft high-CTR thumbnails and viral graphics designed specifically to help other creators and channels dominate the YouTube algorithm.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="routeTo('gallery')">View Thumbnail Portfolio</button>
+                        <a href="https://www.youtube.com/@InteligentofficialOG" target="_blank" rel="noopener noreferrer" class="btn btn-youtube">Subscribe on YouTube</a>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-showcase">
+                        <img src="Y-dyAkbT_7Q-HD.jpg" alt="High CTR Thumbnail Showcase">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="items" class="page">
+            <h2 class="page-title">Thumbnail Styles & Services</h2>
+            <p class="page-subtitle">Custom packaging built to level up click-through rates. Special discounted rates apply for Indian content creators.</p>
+            
+            <div class="items-grid">
+                <div class="shop-card">
+                    <div class="card-banner">
+                        <img src="chat-uncensored-ai-flux (4).jpg" alt="Legendary King Gaming Thumbnail Design">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">Gaming / Minecraft / Esports</div>
+                        <h3 class="card-name">3D Pop-Out Gaming Thumbnail</h3>
+                        <p class="card-text">Vibrant text layouts, 3D character glow mapping, custom background framing, and high structural saturation built for extreme mobile conversion.</p>
+                        <div class="card-action-row">
+                            <div>
+                                <span class="card-rate" style="display: block;">₹999</span>
+                                <span class="india-badge">Special India Rate</span>
+                            </div>
+                            <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;" onclick="routeTo('contact')">Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shop-card">
+                    <div class="card-banner">
+                        <img src="https://picsum.photos/id/984/600/338" alt="Infotainment Layout">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">Infotainment / Essay / Commentary</div>
+                        <h3 class="card-name">Minimalist Storytelling Cover</h3>
+                        <p class="card-text">Clean conceptual layouts, high-curiosity element mapping, and dramatic background manipulation built for high retention click-throughs.</p>
+                        <div class="card-action-row">
+                            <div>
+                                <span class="card-rate" style="display: block;">₹1,499</span>
+                                <span class="india-badge">Special India Rate</span>
+                            </div>
+                            <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;" onclick="routeTo('contact')">Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shop-card">
+                    <div class="card-banner">
+                        <img src="https://picsum.photos/id/1050/600/338" alt="Vlog Asset Packaging">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">Vlogs / Entertainment / Challenges</div>
+                        <h3 class="card-name">Viral IRL Entertainment Layout</h3>
+                        <p class="card-text">Expressive color isolation, extreme character adjustments, and clean high-contrast visual focus elements engineered for casual audiences.</p>
+                        <div class="card-action-row">
+                            <div>
+                                <span class="card-rate" style="display: block;">₹1,199</span>
+                                <span class="india-badge">Special India Rate</span>
+                            </div>
+                            <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;" onclick="routeTo('contact')">Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="page">
+            <h2 class="page-title">Creator Showcase</h2>
+            <p class="page-subtitle">A live record of delivered 16:9 thumbnail compositions built for active YouTube creators.</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <span class="portfolio-badge">ANALYSIS CONCEPT</span>
+                    <img src="Y-dyAkbT_7Q-HD.jpg" alt="Creator Thumbnail Work">
+                    <div class="portfolio-hover">
+                        <div>
+                            <h4 style="font-size: 18px;">Why Does This Exist Layout</h4>
+                            <p style="color: var(--text-muted); font-size: 14px;">High curiosity hook structure</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <span class="portfolio-badge">GAMING</span>
+                    <img src="chat-uncensored-ai-flux (4).jpg" alt="Creator Thumbnail Work">
+                    <div class="portfolio-hover">
+                        <div>
+                            <h4 style="font-size: 18px;">Legendary King Minecraft Art</h4>
+                            <p style="color: var(--text-muted); font-size: 14px;">3D rendering & glow effects</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <span class="portfolio-badge">FINANCE / IRL</span>
+                    <img src="https://picsum.photos/id/504/600/338" alt="Creator Thumbnail Work">
+                    <div class="portfolio-hover">
+                        <div>
+                            <h4 style="font-size: 18px;">Clean Economy Growth Asset</h4>
+                            <p style="color: var(--text-muted); font-size: 14px;">High mobile optimization variant</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <span class="portfolio-badge">ENTERTAINMENT</span>
+                    <img src="https://picsum.photos/id/962/600/338" alt="Creator Thumbnail Work">
+                    <div class="portfolio-hover">
+                        <div>
+                            <h4 style="font-size: 18px;">High-Pace Viral Challenge Concept</h4>
+                            <p style="color: var(--text-muted); font-size: 14px;">Expressive color grading style</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <h2 class="page-title">Start a Project</h2>
+            <p class="page-subtitle">Ready to scale your channel's metrics? Get in touch directly to review availability.</p>
+            
+            <div class="panel-layout">
+                <div class="panel-details">
+                    <h3>Booking Status: Open</h3>
+                    <p>I provide tailored bulk discounts and monthly thumbnail retention slots for consistent upload workflows.</p>
+                    
+                    <div class="metric-stack">
+                        <div class="metric-item">
+                            <div class="metric-icon">✓</div>
+                            <div>
+                                <small style="display:block; color:var(--text-muted); font-size:12px;">AVERAGE DELIVERY</small>
+                                <strong>24 - 48 Hours</strong>
+                            </div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-icon">▶</div>
+                            <div>
+                                <small style="display:block; color:var(--text-muted); font-size:12px;">MY OFFICIAL CHANNEL</small>
+                                <strong>InteligentofficialOG</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-cta-box">
+                    <h4>Direct Instagram DM</h4>
+                    <p>For custom quotes, bundle deals, order placements, or immediate inquiries, hit the link below to DM me directly on Instagram.</p>
+                    <a href="https://www.instagram.com/notharshit_official/#" target="_blank" rel="noopener noreferrer" class="btn btn-instagram" style="width: 100%;">
+                        Send Direct Message (DM)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Intelligentultra. Built for Cloudflare Pages deployment.</p>
+    </footer>
+
+    <script>
+        function routeTo(targetId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+            
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(l => l.classList.remove('active'));
+            
+            const selectedPage = document.getElementById(targetId);
+            if(selectedPage) {
+                selectedPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            const contextualLink = document.querySelector(`.nav-link[data-page="${targetId}"]`);
+            if(contextualLink) {
+                contextualLink.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
